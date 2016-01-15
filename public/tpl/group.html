@@ -20,7 +20,7 @@
 					<td class="text-right"><div new-user-to-group></div></td>
 				</tr>
 				<tr>
-					<td class="text-center" colspan="{{group.members.length + 2}}" new-trans-to-group my-dir-model='group'></td>
+					<td class="text-center" colspan="{{group.members.length + 2}}" new-trans-to-group my-dir-model='group' ng-if="group.members.length > 0"></td>
 				</tr>
 			</tbody>
 		</table>
