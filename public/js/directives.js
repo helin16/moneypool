@@ -12,6 +12,19 @@ var app = angular.module('mpApp.directives', [])
         });
     };
 })
+.directive('newGroupFormBtn', ['$compile', function($compile) {
+	return {
+		restrice: 'AE',
+		scope: {
+			myGroup: '='
+		},
+		// observe and manipulate the DOM
+        link: function($scope, element, attrs) {
+        	element.attr('uib-popover-template', "'/tpl/newGroupForm.html'");
+        	element.attr('popover-animation', "true'");
+        }
+	}
+}])
 .directive('editableGroupName', ['$compile', 'mpAPIservice', function ($compile, mpAPIservice){
 	return {
 		restrict: 'AE',
