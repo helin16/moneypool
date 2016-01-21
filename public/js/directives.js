@@ -12,6 +12,7 @@ var app = angular.module('mpApp.directives', [])
         });
     };
 })
+
 .directive('editableGroupName', ['$compile', 'mpAPIservice', function ($compile, mpAPIservice){
 	return {
 		restrict: 'AE',
@@ -62,15 +63,23 @@ var app = angular.module('mpApp.directives', [])
 		template: '<button class="btn btn-info btn-xs" title="New Transaction" href="#" uib-popover-template="' + "'" + '/tpl/newTransToGroupForm.html' + "'" + '"  popover-placement="bottom" popover-animation="true"><i class="fa fa-plus"></i> <span class="">New Transaction</button>'
 	};
 })
-.directive('editMePanel', function ($compile){
+.directive('editMePanel', ['$compile', 'mpAPIservice', function ($compile, mpAPIservice){
 	return {
 		restrict: 'AE',
 		scope: {
 			userModel: '='
 		},
 		templateUrl: '/tpl/editMe.html'
+		,link: function ( $scope, element, attrs ) {
+			$scope.processForm = function () {
+				mpAPIservice.saveUser($scope.userModel)
+					.success(function() {
+						alert('User saved successfully.');
+					});
+			};
+		}
 	};
-})
+}])
 .directive('userAvatar', function ($compile) {
 	return {
 		restrict: 'AE',
@@ -93,11 +102,12 @@ var app = angular.module('mpApp.directives', [])
 .directive('passwordMatch', function ($compile) {
 	return {
 		require: 'ngModel',
-		link: function (scope, confirmElement, attrs, controller) {
-			var firstPassword = '#' + attrs.passwordMatch;
-			confirmElement.add(firstPassword).on('keyup', function () {
-				scope.$apply(function () {
-					controller.$setValidity('password-matched', confirmElement.val() === $(firstPassword).val());
+		link: function ($scope, confirmElement, attrs, controller) {
+			console.debug(confirmElement);
+			console.debug($scope.confirmPass);
+			confirmElement.on('keyup', function () {
+				$scope.$apply(function () {
+//					controller.$setValidity('password-matched', confirmElement.val() == $(firstPassword).val());
 				});
 			});
 		}

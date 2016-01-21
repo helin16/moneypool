@@ -46,6 +46,13 @@ angular.module('mpApp.services', []).
 			params: parameters
 		});
 	};
+	mpAPI.saveUser = function(user) {
+		return $http({
+			method: 'PUT', 
+			url: '/api/user/' + user.id,
+			params: user
+		});
+	};
 
     return mpAPI;
   });

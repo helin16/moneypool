@@ -1,13 +1,13 @@
-<form role="form" ng-submit="processForm()">
+<form role="form" ng-submit="submit()" name="newGroupForm">
 	<div class="form-group">
 		<label>Name:</label>
-		<input class="form-control" placeholder="Group Name"/>
+		<input class="form-control" placeholder="Group Name" ng-model="group.name"/>
 	</div>
 	<div class="form-group">
 		<label>Description:</label>
-		<textarea class="form-control" placeholder="Description" rows=4/>
+		<textarea class="form-control" placeholder="Description" rows=4 ng-model="group.description"/>
 	</div>
 	<div class="form-group">
-		<button class="btn btn-success" ng-disabled="editMeForm.$pristine || editMeForm.$invalid">Submit</button>
+		<button class="btn btn-success" type="submit" ng-disabled="newGroupForm.$pristine || newGroupForm.$invalid">Submit</button>
 	</div>
 </form>

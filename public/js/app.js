@@ -17,6 +17,6 @@ var app = angular.module('mpApp', [
 	.otherwise({redirectTo: '/group'});
 }])
 .run(['$rootScope', function($rootScope){
-	$rootScope.user = {"id":1,"active":1,"created":"2006-03-01 23:41:27","createdById":1,"updated":"1996-02-09 11:42:12","updatedById":1,"firstname":"Gilbert","lastname":"Luettgen","email":"fLegros@hotmail.com"}
+	$rootScope.user = {"id":1,"firstname":"Jedidiah","lastname":"Funk","email":"tLind@yahoo.comfdafsda","active":1,"created":"2016-01-21 22:44:17","createdById":1,"updated":"1972-10-25 20:58:58","updatedById":1}
 }])
 ;
