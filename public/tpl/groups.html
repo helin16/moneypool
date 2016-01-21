@@ -1,5 +1,8 @@
 <div class="container">
-	<h3 class="page-header"><small><i class="fa fa-group"></i></small> My Groups <small>: {{groupList.total}}</small></h3>
+	<h3 class="page-header">
+	 <small><i class="fa fa-group"></i></small> My Groups <small>: {{groupList.total}}</small>
+	 <button class="btn btn-success btn-sm pull-right" popover-placement="bottom" uib-popover-template="'/tpl/newGroupForm.html'" popover-animation="true"><i class="fa fa-plus"></i><span class="hidden-xs hidden-sm"> New Group</span></button>
+	</h3>
 	<div class="row">
 		<div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="group in groupList.data | filter: nameFilter">
 			<a href="#/group/{{group.id}}">
@@ -26,7 +29,7 @@
 			</a>
 		</div>
 		<div class="col-sm-6 col-md-4 col-lg-3 new-group-btn-wrapper">
-			<a class="new-group-btn" href="javascript: void(0);" new-group-form-btn>
+			<a class="new-group-btn" href="javascript: void(0);" uib-popover-template="'/tpl/newGroupForm.html'" popover-animation="true">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="panel-heading text-center" >

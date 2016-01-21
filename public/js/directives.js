@@ -12,19 +12,6 @@ var app = angular.module('mpApp.directives', [])
         });
     };
 })
-.directive('newGroupFormBtn', ['$compile', function($compile) {
-	return {
-		restrice: 'AE',
-		scope: {
-			myGroup: '='
-		},
-		// observe and manipulate the DOM
-        link: function($scope, element, attrs) {
-        	element.attr('uib-popover-template', "'/tpl/newGroupForm.html'");
-        	element.attr('popover-animation', "true'");
-        }
-	}
-}])
 .directive('editableGroupName', ['$compile', 'mpAPIservice', function ($compile, mpAPIservice){
 	return {
 		restrict: 'AE',
@@ -58,6 +45,12 @@ var app = angular.module('mpApp.directives', [])
 			ngModel: '='
 		},
 		template: '<button class="btn btn-success btn-xs" title="New Member" href="#" uib-popover-template="' + "'" + '/tpl/newUser.html' + "'" + '"  popover-placement="bottom" popover-animation="true"><i class="fa fa-plus"></i><span class="hidden-xs"> New Member</span></button>'
+		,link: function ( $scope, element, attrs ) {
+			$scope.save = function () {
+				console.debug('TEST');
+				console.debug($scope.ngModel);
+			};
+		}
 	};
 })
 .directive('newTransToGroup', function ($compile){
